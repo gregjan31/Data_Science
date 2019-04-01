@@ -1,0 +1,93 @@
+6. Python Machine Learning - Predictive Modeling
+
+Objective - Accurately predict y (U5MR) using SDCM X variables from the SDCM1 dataset
+
+1. #Import numpy, pandas, matplotlib, and seaborn libraries#
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+#data visualization libraries#
+import seaborn as sns
+%matplotlib inline
+
+2. #Import Dataset & Describe Data#
+
+SDCMdata = pd.read_stata('SDCM1.dta')
+SDCMdata.head()
+SDCMdata.info()
+SDCMdata.describe()
+SDCMdata.columns
+SDCMdata.mean()
+SDCMdata.corr()
+SDCMdata.count()
+SDCMdata.max()
+SDCMdata.min()
+SDCMdata.median()
+SDCMdata.std()
+
+3. #Import from within sklearn and matplotlib#
+
+import pandas as pd
+import sklearn 
+from sklearn import linear_model
+from sklearn.model_selection import train_test_split
+from matplotlib import pyplot as plt
+
+4. #Building, training, testing the model#
+
+from sklearn import linear_model
+
+X = SDCMdata[["_PEducF", "_SEducM", "_MYS", "_PEducM", "_SEducF", "_Literacy", "_HCPOC", "_HCGDP", "_PopDensity", "_UPop", "_WaterR", "_SanitationR", "_Electricity", "_GDPpc", "_LabourF"]]
+y = SDCMdata["CM"]
+
+4.1 #create training and testing varibles#
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+print(X_train.shape, y_train.shape)
+print(X_test.shape, y_test.shape)
+
+4.2 #fit a model#
+lm = linear_model.LinearRegression()
+
+model = lm.fit(X_train, y_train)
+predictions = lm.predict(X_test)
+
+4.3 #Run the regression#
+lm = linear_model.LinearRegression()
+model = lm.fit(X, y)
+
+4.4 #Predict Y based on the linear model we have developed#
+predictions = lm.predict(X)
+print(predictions)
+[278.49453336 260.17919158 260.95049817 260.86856329 259.13630544
+ 258.04826952 255.73125637 249.56862391 246.82725664 236.98736155
+ 228.02956981 222.64513603 215.98865817 207.0590798  200.6737039
+ 203.4107454  194.80266278 193.36261096 191.81755502 183.23798783
+ 171.92884546 241.99981225 246.61148284 253.92446446 254.58640998
+ 223.85942296 216.68420243 217.61640584 211.92128719 196.82324301
+ 188.07162431 164.52314009 160.00213377 151.46333307 147.34453834
+ 130.03676994 122.90179425 115.97369531 104.48837518  97.30699903
+  85.57790593  82.6225085  231.26120225 230.62442429 228.6598883
+ 224.32026419 214.6453142  202.40971269 203.03346037 193.9772534
+ 186.57691735 177.13320109 175.33532525 157.77992819 153.15902868
+ 145.00457398 142.00235274 157.74983685 130.42516937 125.49820393
+ 116.63066312 112.90824633 103.27706975]
+
+4.5 #Obtain the R^2#
+lm.score(X, y)
+0.9878024994016049
+
+4.6 #Obtain the X value coefficients#
+lm.coef_
+array([-3.87003972e-01,  3.37389098e+00, -2.48225318e+00,  4.82735318e-01,
+       -4.74266546e+00, -5.53144304e-01,  2.68836744e-01, -1.29994070e+00,
+        5.00784706e-01, -7.92842131e-01, -2.71870894e+00, -2.10464903e+00,
+       -3.33613083e+00, -7.74982939e-04,  2.71273977e+00])
+
+4.7 #Obtain the R^2#
+lm.score(X, y)
+0.9878024994016049
+
+4.8 #Obtain the intercept#
+lm.intercept_
+192.39662405270516
