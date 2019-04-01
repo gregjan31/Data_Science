@@ -1,0 +1,111 @@
+/*2 Random Effects Multivariate Regression (Unstandardized)*/
+
+1) Full Model
+
+xtreg CM _PEducF _SEducM _MYS _PEducM _SEducF _Literacy _FHCiv _HCPOC _HCGDP _FHPol ///
+_PopDensity _WaterR _SanitationR _Electricity _Credit _GDPpc
+
+. xtreg CM _PEducF _SEducM _MYS _PEducM _SEducF _Literacy _FHCiv _HCPOC _HCGDP _
+> FHPol ///
+> _PopDensity _WaterR _SanitationR _Electricity _Credit _GDPpc
+
+Random-effects GLS regression                   Number of obs      =        54
+Group variable: Country                         Number of groups   =         3
+
+R-sq:  within  = 0.9878                         Obs per group: min =        13
+       between = 1.0000                                        avg =      18.0
+       overall = 0.9942                                        max =        21
+
+                                                Wald chi2(16)      =   6303.07
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+          CM |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     _PEducF |   .2654537   .2063741     1.29   0.198     -.1390321    .6699395
+     _SEducM |   1.877491   .5494268     3.42   0.001*     .8006339    2.954347
+        _MYS |  -8.301341   2.744726    -3.02   0.002*    -13.68091   -2.921777
+     _PEducM |   .1406252   .1643624     0.86   0.392     -.1815193    .4627696
+     _SEducF |  -1.683571   .8278336    -2.03   0.042*    -3.306095   -.0610468
+   _Literacy |  -.1970112   .2478289    -0.79   0.427     -.6827471    .2887246
+      _FHCiv |   6.431792   2.487861     2.59   0.010*     1.555674    11.30791
+      _HCPOC |   -.030645   .1155555    -0.27   0.791     -.2571297    .1958396
+      _HCGDP |  -.6898598   .6894511    -1.00   0.317     -2.041159    .6614395
+      _FHPol |  -2.907365   1.300386    -2.24   0.025*    -5.456074   -.3586559
+ _PopDensity |  -1.009522   .4688892    -2.15   0.031*    -1.928528   -.0905165
+     _WaterR |  -5.114356   .6991264    -7.32   0.000*    -6.484619   -3.744094
+_SanitationR |   3.630001   3.383217     1.07   0.283     -3.000982    10.26098
+_Electricity |  -1.256788   1.084613    -1.16   0.247      -3.38259    .8690135
+     _Credit |   .0286762    .816274     0.04   0.972     -1.571191    1.628544
+      _GDPpc |   .0458362   .0204177     2.24   0.025*     .0058182    .0858542
+       _cons |   428.6531   27.03985    15.85   0.000       375.656    481.6502
+-------------+----------------------------------------------------------------
+     sigma_u |          0
+     sigma_e |  4.3829025
+         rho |          0   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+2) Remove non-statistically significant variables and re-run random effects multivariate regression 
+
+xtreg CM _SEducM _MYS _SEducF _FHCiv _FHPol _PopDensity _WaterR _GDPpc
+
+. xtreg CM _SEducM _MYS _SEducF _FHCiv _FHPol _PopDensity _WaterR _GDPpc
+
+Random-effects GLS regression                   Number of obs      =        63
+Group variable: Country                         Number of groups   =         3
+
+R-sq:  within  = 0.9614                         Obs per group: min =        21
+       between = 0.9966                                        avg =      21.0
+       overall = 0.9706                                        max =        21
+
+                                                Wald chi2(8)       =   1780.87
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+          CM |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     _SEducM |   2.661987   .5249773     5.07   0.000*     1.633051    3.690924
+        _MYS |  -12.44982   2.455417    -5.07   0.000*    -17.26235    -7.63729
+     _SEducF |  -2.115757   .8854002    -2.39   0.017*     -3.85111   -.3804047
+      _FHCiv |   3.238064    2.69171     1.20   0.229     -2.037591    8.513719
+      _FHPol |  -1.788148   1.781014    -1.00   0.315     -5.278871    1.702576
+ _PopDensity |  -.1772855   .2532028    -0.70   0.484     -.6735539    .3189829
+     _WaterR |  -3.618862   .2810744   -12.88   0.000*    -4.169758   -3.067966
+      _GDPpc |  -.0492157   .0186463    -2.64   0.008*    -.0857618   -.0126696
+       _cons |    404.944   20.56216    19.69   0.000      364.6429     445.245
+-------------+----------------------------------------------------------------
+     sigma_u |          0
+     sigma_e |  6.9131743
+         rho |          0   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+3) Remove non-statistically significant variables and re-run random effects multivariate regression 
+
+xtreg CM _SEducM _MYS _SEducF _WaterR _GDPpc
+
+. xtreg CM _SEducM _MYS _SEducF _WaterR _GDPpc
+
+Random-effects GLS regression                   Number of obs      =        63
+Group variable: Country                         Number of groups   =         3
+
+R-sq:  within  = 0.9597                         Obs per group: min =        21
+       between = 0.9951                                        avg =      21.0
+       overall = 0.9689                                        max =        21
+
+                                                Wald chi2(5)       =   1775.80
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+          CM |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     _SEducM |   2.854276    .414093     6.89   0.000*     2.042669    3.665883
+        _MYS |  -12.10341    2.42846    -4.98   0.000*     -16.8631   -7.343716
+     _SEducF |  -2.659944   .5370472    -4.95   0.000*    -3.712537   -1.607351
+     _WaterR |  -3.456521   .1682823   -20.54   0.000*    -3.786348   -3.126694
+      _GDPpc |  -.0680851   .0118113    -5.76   0.000*    -.0912349   -.0449354
+       _cons |   403.9504   10.45187    38.65   0.000      383.4651    424.4357
+-------------+----------------------------------------------------------------
+     sigma_u |          0
+     sigma_e |  7.6685998
+         rho |          0   (fraction of variance due to u_i)
+------------------------------------------------------------------------------

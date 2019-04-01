@@ -1,0 +1,751 @@
+/*3 Factor Analysis (Unstandardized)*/
+
+/*3.1 Factor Analysis for Education*/
+/*3.2 Factor Analysis for Health Care System Total*/
+/*3.2a Factor Analysis for Health Care System Total B1*/
+/*3.2b Factor Analysis for Health Care System Total B2*/
+/*3.2.1 Factor Analysis for Health Care System (HC)*/
+/*3.2.2 Factor Analysis for Health Care System (Demography)*/
+/*3.3 Factor Analysis for Demography*/
+/*3.4 Factor Analysis for Infrastructure*/
+/*3.5a Factor Analysis for Economics D*/
+/*3.5b Factor Analysis for Economics D1*/
+
+
+/*3.1 Factor Analysis for Education*/
+
+factor _PEducF _SEducM _MYS _PEducM _SEducF _Literacy, pcf
+rotate
+predict factorA
+
+. factor _PEducF _SEducM _MYS _PEducM _SEducF _Literacy, pcf
+(obs=63)
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        1
+    Rotation: (unrotated)                          Number of params =        6
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      4.62877      3.83412            0.7715       0.7715
+        Factor2  |      0.79465      0.45343            0.1324       0.9039
+        Factor3  |      0.34122      0.20965            0.0569       0.9608
+        Factor4  |      0.13157      0.06638            0.0219       0.9827
+        Factor5  |      0.06520      0.02661            0.0109       0.9936
+        Factor6  |      0.03858            .            0.0064       1.0000
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(15) =  468.47 Prob>chi2 = 0.0000
+
+Factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+         _PEducF |   0.9138 |      0.1649  
+         _SEducM |   0.8502 |      0.2771  
+            _MYS |   0.9048 |      0.1813  
+         _PEducM |   0.9405 |      0.1154  
+         _SEducF |   0.9639 |      0.0709  
+       _Literacy |   0.6622 |      0.5615  
+    ---------------------------------------
+
+. rotate
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        1
+    Rotation: orthogonal varimax (Kaiser off)      Number of params =        6
+
+    --------------------------------------------------------------------------
+         Factor  |     Variance   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      4.62877            .            0.7715       0.7715
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(15) =  468.47 Prob>chi2 = 0.0000
+
+Rotated factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+         _PEducF |   0.9138 |      0.1649  
+         _SEducM |   0.8502 |      0.2771  
+            _MYS |   0.9048 |      0.1813  
+         _PEducM |   0.9405 |      0.1154  
+         _SEducF |   0.9639 |      0.0709  
+       _Literacy |   0.6622 |      0.5615  
+    ---------------------------------------
+
+Factor rotation matrix
+
+    -----------------------
+                 | Factor1 
+    -------------+---------
+         Factor1 |  1.0000 
+    -----------------------
+
+. predict factorA
+(regression scoring assumed)
+
+Scoring coefficients (method = regression; based on varimax rotated factors)
+
+    ------------------------
+        Variable |  Factor1 
+    -------------+----------
+         _PEducF |  0.19742 
+         _SEducM |  0.18368 
+            _MYS |  0.19548 
+         _PEducM |  0.20319 
+         _SEducF |  0.20824 
+       _Literacy |  0.14306 
+    ------------------------
+
+
+/*3.2a Factor Analysis for Health Care System Total B1*/
+
+factor _FHCiv _HCPOC _HCGDP _FHPol _PopDensity _UPop, pcf
+rotate
+predict factorB1
+ 
+. factor _FHCiv _HCPOC _HCGDP _FHPol _PopDensity _UPop, pcf
+(obs=63)
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        2
+    Rotation: (unrotated)                          Number of params =       11
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      2.79023      1.02312            0.4650       0.4650
+        Factor2  |      1.76711      0.97962            0.2945       0.7596
+        Factor3  |      0.78749      0.40166            0.1312       0.8908
+        Factor4  |      0.38583      0.20098            0.0643       0.9551
+        Factor5  |      0.18485      0.10037            0.0308       0.9859
+        Factor6  |      0.08448            .            0.0141       1.0000
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(15) =  225.94 Prob>chi2 = 0.0000
+
+Factor loadings (pattern matrix) and unique variances
+
+    -------------------------------------------------
+        Variable |  Factor1   Factor2 |   Uniqueness 
+    -------------+--------------------+--------------
+          _FHCiv |  -0.8522   -0.0302 |      0.2729  
+          _HCPOC |   0.2017    0.8240 |      0.2804  
+          _HCGDP |   0.7594   -0.3427 |      0.3059  
+          _FHPol |  -0.8268    0.3453 |      0.1972  
+     _PopDensity |   0.8683    0.3114 |      0.1491  
+           _UPop |  -0.0961   -0.8681 |      0.2372  
+    -------------------------------------------------
+
+. rotate
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        2
+    Rotation: orthogonal varimax (Kaiser off)      Number of params =       11
+
+    --------------------------------------------------------------------------
+         Factor  |     Variance   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      2.76077      0.96420            0.4601       0.4601
+        Factor2  |      1.79657            .            0.2994       0.7596
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(15) =  225.94 Prob>chi2 = 0.0000
+
+Rotated factor loadings (pattern matrix) and unique variances
+
+    -------------------------------------------------
+        Variable |  Factor1   Factor2 |   Uniqueness 
+    -------------+--------------------+--------------
+          _FHCiv |  -0.8347   -0.1744 |      0.2729  
+          _HCPOC |   0.0589    0.8463 |      0.2804  
+          _HCGDP |   0.8065   -0.2089 |      0.3059  
+          _FHPol |  -0.8734    0.2000 |      0.1972  
+     _PopDensity |   0.8029    0.4542 |      0.1491  
+           _UPop |   0.0526   -0.8718 |      0.2372  
+    -------------------------------------------------
+
+Factor rotation matrix
+
+    --------------------------------
+                 | Factor1  Factor2 
+    -------------+------------------
+         Factor1 |  0.9855   0.1697 
+         Factor2 | -0.1697   0.9855 
+    --------------------------------
+
+. predict factorB1
+(regression scoring assumed)
+
+Scoring coefficients (method = regression; based on varimax rotated factors)
+
+    ----------------------------------
+        Variable |  Factor1   Factor2 
+    -------------+--------------------
+          _FHCiv | -0.29808  -0.06867 
+          _HCPOC | -0.00790   0.47180 
+          _HCGDP |  0.30112  -0.14493 
+          _FHPol | -0.32517   0.14230 
+     _PopDensity |  0.27678   0.22645 
+           _UPop |  0.04940  -0.48997 
+    ----------------------------------
+
+
+/*3.2b Factor Analysis for Health Care System Total B2*/
+
+
+factor _FHCiv _HCPOC _HCGDP _FHPol _PopDensity, pcf
+rotate
+predict factorB2
+
+. factor _FHCiv _HCPOC _HCGDP _FHPol _PopDensity, pcf
+(obs=63)
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        2
+    Rotation: (unrotated)                          Number of params =        9
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      2.78523      1.56323            0.5570       0.5570
+        Factor2  |      1.22200      0.56263            0.2444       0.8014
+        Factor3  |      0.65936      0.42482            0.1319       0.9333
+        Factor4  |      0.23454      0.13567            0.0469       0.9802
+        Factor5  |      0.09887            .            0.0198       1.0000
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(10) =  178.82 Prob>chi2 = 0.0000
+
+Factor loadings (pattern matrix) and unique variances
+
+    -------------------------------------------------
+        Variable |  Factor1   Factor2 |   Uniqueness 
+    -------------+--------------------+--------------
+          _FHCiv |  -0.8480    0.0714 |      0.2759  
+          _HCPOC |   0.1704    0.9529 |      0.0629  
+          _HCGDP |   0.7760   -0.1316 |      0.3804  
+          _FHPol |  -0.8391    0.3851 |      0.1476  
+     _PopDensity |   0.8549    0.3784 |      0.1259  
+    -------------------------------------------------
+
+. rotate
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        2
+    Rotation: orthogonal varimax (Kaiser off)      Number of params =        9
+
+    --------------------------------------------------------------------------
+         Factor  |     Variance   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      2.71226      1.41729            0.5425       0.5425
+        Factor2  |      1.29497            .            0.2590       0.8014
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(10) =  178.82 Prob>chi2 = 0.0000
+
+Rotated factor loadings (pattern matrix) and unique variances
+
+    -------------------------------------------------
+        Variable |  Factor1   Factor2 |   Uniqueness 
+    -------------+--------------------+--------------
+          _FHCiv |   0.8434   -0.1135 |      0.2759  
+          _HCPOC |   0.0395    0.9672 |      0.0629  
+          _HCGDP |  -0.7862    0.0391 |      0.3804  
+          _FHPol |   0.9025    0.1947 |      0.1476  
+     _PopDensity |  -0.7529    0.5542 |      0.1259  
+    -------------------------------------------------
+
+Factor rotation matrix
+
+    --------------------------------
+                 | Factor1  Factor2 
+    -------------+------------------
+         Factor1 | -0.9764          
+         Factor2 |  0.2161   0.9764 
+    --------------------------------
+
+. predict factorB2
+(regression scoring assumed)
+
+Scoring coefficients (method = regression; based on varimax rotated factors)
+
+    ----------------------------------
+        Variable |  Factor1   Factor2 
+    -------------+--------------------
+          _FHCiv |  0.30989  -0.00870 
+          _HCPOC |  0.10876   0.77460 
+          _HCGDP | -0.29532  -0.04497 
+          _FHPol |  0.36224   0.24261 
+     _PopDensity | -0.23278   0.36868 
+    ----------------------------------
+
+
+/*3.2.1 Factor Analysis for Health Care System (HC)*/
+
+factor _FHCiv _HCPOC _HCGDP _FHPol, pcf
+rotate
+predict factorB3
+
+. /*3.2.1 Factor Analysis for Health Care System (HC)*/
+. 
+. factor _FHCiv _HCPOC _HCGDP _FHPol, pcf
+(obs=63)
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        2
+    Rotation: (unrotated)                          Number of params =        6
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      2.18436      1.14790            0.5461       0.5461
+        Factor2  |      1.03646      0.41732            0.2591       0.8052
+        Factor3  |      0.61914      0.45909            0.1548       0.9600
+        Factor4  |      0.16005            .            0.0400       1.0000
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(6)  =   90.92 Prob>chi2 = 0.0000
+
+Factor loadings (pattern matrix) and unique variances
+
+    -------------------------------------------------
+        Variable |  Factor1   Factor2 |   Uniqueness 
+    -------------+--------------------+--------------
+          _FHCiv |   0.8591   -0.2095 |      0.2180  
+          _HCPOC |   0.0585    0.9907 |      0.0152  
+          _HCGDP |  -0.7505   -0.0406 |      0.4352  
+          _FHPol |   0.9379    0.0976 |      0.1108  
+    -------------------------------------------------
+
+. rotate
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        2
+    Rotation: orthogonal varimax (Kaiser off)      Number of params =        6
+
+    --------------------------------------------------------------------------
+         Factor  |     Variance   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      2.18233      1.14385            0.5456       0.5456
+        Factor2  |      1.03848            .            0.2596       0.8052
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(6)  =   90.92 Prob>chi2 = 0.0000
+
+Rotated factor loadings (pattern matrix) and unique variances
+
+    -------------------------------------------------
+        Variable |  Factor1   Factor2 |   Uniqueness 
+    -------------+--------------------+--------------
+          _FHCiv |   0.8672   -0.1732 |      0.2180  
+          _HCPOC |   0.0168    0.9922 |      0.0152  
+          _HCGDP |  -0.7481   -0.0721 |      0.4352  
+          _FHPol |   0.9330    0.1369 |      0.1108  
+    -------------------------------------------------
+
+Factor rotation matrix
+
+    --------------------------------
+                 | Factor1  Factor2 
+    -------------+------------------
+         Factor1 |  0.9991   0.0420 
+         Factor2 | -0.0420   0.9991 
+    --------------------------------
+
+. predict factorB3
+(regression scoring assumed)
+
+Scoring coefficients (method = regression; based on varimax rotated factors)
+
+    ----------------------------------
+        Variable |  Factor1   Factor2 
+    -------------+--------------------
+          _FHCiv |  0.40145  -0.18540 
+          _HCPOC | -0.01337   0.95610 
+          _HCGDP | -0.34162  -0.05355 
+          _FHPol |  0.42503   0.11212 
+    ----------------------------------
+
+
+/*3.2.2 Factor Analysis for Health Care System (Demography)*/
+
+factor _PopDensity _UPop, pcf
+rotate
+predict factorB4
+
+. 
+. /*3.2.2 Factor Analysis for Health Care System (Demography)*/
+. 
+. factor _PopDensity _UPop, pcf
+(obs=63)
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        1
+    Rotation: (unrotated)                          Number of params =        1
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      1.30569      0.61138            0.6528       0.6528
+        Factor2  |      0.69431            .            0.3472       1.0000
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(1)  =    6.03 Prob>chi2 = 0.0140
+
+Factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+     _PopDensity |  -0.8080 |      0.3472  
+           _UPop |   0.8080 |      0.3472  
+    ---------------------------------------
+
+. rotate
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        1
+    Rotation: orthogonal varimax (Kaiser off)      Number of params =        1
+
+    --------------------------------------------------------------------------
+         Factor  |     Variance   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      1.30569            .            0.6528       0.6528
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(1)  =    6.03 Prob>chi2 = 0.0140
+
+Rotated factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+     _PopDensity |  -0.8080 |      0.3472  
+           _UPop |   0.8080 |      0.3472  
+    ---------------------------------------
+
+Factor rotation matrix
+
+    -----------------------
+                 | Factor1 
+    -------------+---------
+         Factor1 |  1.0000 
+    -----------------------
+
+. predict factorB4
+(regression scoring assumed)
+
+Scoring coefficients (method = regression; based on varimax rotated factors)
+
+    ------------------------
+        Variable |  Factor1 
+    -------------+----------
+     _PopDensity | -0.61882 
+           _UPop |  0.61882 
+    ------------------------
+
+/*3.3 Factor Analysis for Demography*/
+
+factor _PopDensity _UPop, pcf
+rotate
+predict factorB5
+
+. 
+. /*3.3 Factor Analysis for Demography*/
+. 
+. factor _PopDensity _UPop, pcf
+(obs=63)
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        1
+    Rotation: (unrotated)                          Number of params =        1
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      1.30569      0.61138            0.6528       0.6528
+        Factor2  |      0.69431            .            0.3472       1.0000
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(1)  =    6.03 Prob>chi2 = 0.0140
+
+Factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+     _PopDensity |  -0.8080 |      0.3472  
+           _UPop |   0.8080 |      0.3472  
+    ---------------------------------------
+
+. rotate
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        1
+    Rotation: orthogonal varimax (Kaiser off)      Number of params =        1
+
+    --------------------------------------------------------------------------
+         Factor  |     Variance   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      1.30569            .            0.6528       0.6528
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(1)  =    6.03 Prob>chi2 = 0.0140
+
+Rotated factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+     _PopDensity |  -0.8080 |      0.3472  
+           _UPop |   0.8080 |      0.3472  
+    ---------------------------------------
+
+Factor rotation matrix
+
+    -----------------------
+                 | Factor1 
+    -------------+---------
+         Factor1 |  1.0000 
+    -----------------------
+
+. predict factorB5
+(regression scoring assumed)
+
+Scoring coefficients (method = regression; based on varimax rotated factors)
+
+    ------------------------
+        Variable |  Factor1 
+    -------------+----------
+     _PopDensity | -0.61882 
+           _UPop |  0.61882 
+    ------------------------
+
+
+/*3.4 Factor Analysis for Infrastructure*/
+
+factor _WaterR _SanitationR _Electricity, pcf
+rotate
+predict factorC
+
+. 
+. /*3.4 Factor Analysis for Infrastructure*/
+. 
+. factor _WaterR _SanitationR _Electricity, pcf
+(obs=63)
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        1
+    Rotation: (unrotated)                          Number of params =        3
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      2.07592      1.23171            0.6920       0.6920
+        Factor2  |      0.84421      0.76433            0.2814       0.9734
+        Factor3  |      0.07988            .            0.0266       1.0000
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(3)  =  120.27 Prob>chi2 = 0.0000
+
+Factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+         _WaterR |   0.5281 |      0.7211  
+    _SanitationR |   0.9653 |      0.0682  
+    _Electricity |   0.9302 |      0.1348  
+    ---------------------------------------
+
+. rotate
+
+Factor analysis/correlation                        Number of obs    =       63
+    Method: principal-component factors            Retained factors =        1
+    Rotation: orthogonal varimax (Kaiser off)      Number of params =        3
+
+    --------------------------------------------------------------------------
+         Factor  |     Variance   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      2.07592            .            0.6920       0.6920
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(3)  =  120.27 Prob>chi2 = 0.0000
+
+Rotated factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+         _WaterR |   0.5281 |      0.7211  
+    _SanitationR |   0.9653 |      0.0682  
+    _Electricity |   0.9302 |      0.1348  
+    ---------------------------------------
+
+Factor rotation matrix
+
+    -----------------------
+                 | Factor1 
+    -------------+---------
+         Factor1 |  1.0000 
+    -----------------------
+
+. predict factorC
+(regression scoring assumed)
+
+Scoring coefficients (method = regression; based on varimax rotated factors)
+
+    ------------------------
+        Variable |  Factor1 
+    -------------+----------
+         _WaterR |  0.25441 
+    _SanitationR |  0.46499 
+    _Electricity |  0.44808 
+    ------------------------
+
+/*3.5a Factor Analysis for Economics D*/
+
+factor _Credit _GDPpc _LabourF, pcf
+rotate
+predict factorD
+
+. 
+. /*3.5 Factor Analysis for Economics*/
+. 
+. factor _Credit _GDPpc _LabourF, pcf
+(obs=54)
+
+Factor analysis/correlation                        Number of obs    =       54
+    Method: principal-component factors            Retained factors =        2
+    Rotation: (unrotated)                          Number of params =        3
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      1.67353      0.63618            0.5578       0.5578
+        Factor2  |      1.03735      0.74823            0.3458       0.9036
+        Factor3  |      0.28912            .            0.0964       1.0000
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(3)  =   35.96 Prob>chi2 = 0.0000
+
+Factor loadings (pattern matrix) and unique variances
+
+    -------------------------------------------------
+        Variable |  Factor1   Factor2 |   Uniqueness 
+    -------------+--------------------+--------------
+         _Credit |  -0.6834    0.6708 |      0.0830  
+          _GDPpc |   0.5893    0.7664 |      0.0654  
+        _LabourF |   0.9270    0.0073 |      0.1407  
+    -------------------------------------------------
+
+. rotate
+
+Factor analysis/correlation                        Number of obs    =       54
+    Method: principal-component factors            Retained factors =        2
+    Rotation: orthogonal varimax (Kaiser off)      Number of params =        3
+
+    --------------------------------------------------------------------------
+         Factor  |     Variance   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      1.42139      0.13189            0.4738       0.4738
+        Factor2  |      1.28949            .            0.4298       0.9036
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(3)  =   35.96 Prob>chi2 = 0.0000
+
+Rotated factor loadings (pattern matrix) and unique variances
+
+    -------------------------------------------------
+        Variable |  Factor1   Factor2 |   Uniqueness 
+    -------------+--------------------+--------------
+         _Credit |   0.9533    0.0909 |      0.0830  
+          _GDPpc |   0.0247    0.9664 |      0.0654  
+        _LabourF |  -0.7156    0.5893 |      0.1407  
+    -------------------------------------------------
+
+Factor rotation matrix
+
+    --------------------------------
+                 | Factor1  Factor2 
+    -------------+------------------
+         Factor1 | -0.7770          
+         Factor2 |  0.6296   0.7770 
+    --------------------------------
+
+. predict factorD
+(regression scoring assumed)
+
+Scoring coefficients (method = regression; based on varimax rotated factors)
+
+    ----------------------------------
+        Variable |  Factor1   Factor2 
+    -------------+--------------------
+         _Credit |  0.72436   0.24533 
+          _GDPpc |  0.19154   0.79568 
+        _LabourF | -0.42590   0.35422 
+    ----------------------------------
+
+/*3.5b Factor Analysis for Economics D1*/
+
+factor _Credit _GDPpc, pcf
+rotate
+predict factorD1
+
+
+. 
+. factor _Credit _GDPpc, pcf
+(obs=54)
+
+Factor analysis/correlation                        Number of obs    =       54
+    Method: principal-component factors            Retained factors =        1
+    Rotation: (unrotated)                          Number of params =        1
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      1.03768      0.07536            0.5188       0.5188
+        Factor2  |      0.96232            .            0.4812       1.0000
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(1)  =    0.07 Prob>chi2 = 0.7848
+
+Factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+         _Credit |   0.7203 |      0.4812  
+          _GDPpc |   0.7203 |      0.4812  
+    ---------------------------------------
+
+. rotate
+
+Factor analysis/correlation                        Number of obs    =       54
+    Method: principal-component factors            Retained factors =        1
+    Rotation: orthogonal varimax (Kaiser off)      Number of params =        1
+
+    --------------------------------------------------------------------------
+         Factor  |     Variance   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      1.03768            .            0.5188       0.5188
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(1)  =    0.07 Prob>chi2 = 0.7848
+
+Rotated factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+         _Credit |   0.7203 |      0.4812  
+          _GDPpc |   0.7203 |      0.4812  
+    ---------------------------------------
+
+Factor rotation matrix
+
+    -----------------------
+                 | Factor1 
+    -------------+---------
+         Factor1 |  1.0000 
+    -----------------------
+
+. predict factorD1
+(regression scoring assumed)
+
+Scoring coefficients (method = regression; based on varimax rotated factors)
+
+    ------------------------
+        Variable |  Factor1 
+    -------------+----------
+         _Credit |  0.69415 
+          _GDPpc |  0.69415 
+    ------------------------
