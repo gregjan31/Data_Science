@@ -1,0 +1,143 @@
+/*8 Multivariate Regression of the 5 Constructed Factors & U5MR Time Lags Y=0, Y=1, Y=2, Y=3*/
+/*(CM ~ X1 + X2 + X3 + X4 + X5)*/
+
+1) Multivariate regression of the 5 constructed factors & U5MR with no time lag
+
+xtreg CM ZfactorA ZfactorB1 ZfactorC ZfactorD
+
+. xtreg CM ZfactorA ZfactorB1 ZfactorC ZfactorD 
+
+Random-effects GLS regression                   Number of obs      =        54
+Group variable: Country                         Number of groups   =         3
+
+R-sq:  within  = 0.8461                         Obs per group: min =        13
+       between = 0.9982                                        avg =      18.0
+       overall = 0.9110                                        max =        21
+
+                                                Wald chi2(4)       =    501.77
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+          CM |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    ZfactorA |  -32.07423   3.244416    -9.89   0.000    -38.43317   -25.71529
+   ZfactorB1 |   18.62389   3.399776     5.48   0.000     11.96045    25.28733
+    ZfactorC |  -17.49609     2.7054    -6.47   0.000    -22.79858    -12.1936
+    ZfactorD |  -32.05076   2.337605   -13.71   0.000    -36.63238   -27.46913
+       _cons |   188.6283   2.324713    81.14   0.000      184.072    193.1847
+-------------+----------------------------------------------------------------
+     sigma_u |          0
+     sigma_e |  7.1121046
+         rho |          0   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+2) Multivariate regression of the 5 constructed factors & U5MR with a 1 year factor time lag
+
+
+. xtreg CM L1.ZfactorA L1.ZfactorB1 L1.ZfactorC L1.ZfactorD
+
+Random-effects GLS regression                   Number of obs      =        51
+Group variable: Country                         Number of groups   =         3
+
+R-sq:  within  = 0.8116                         Obs per group: min =        12
+       between = 0.9987                                        avg =      17.0
+       overall = 0.8971                                        max =        20
+
+                                                Wald chi2(4)       =    400.87
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+          CM |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    ZfactorA |
+         L1. |  -34.10065    3.58287    -9.52   0.000    -41.12295   -27.07836
+             |
+   ZfactorB1 |
+         L1. |   19.89876   3.835026     5.19   0.000     12.38225    27.41528
+             |
+    ZfactorC |
+         L1. |  -16.35169   3.052474    -5.36   0.000    -22.33443   -10.36895
+             |
+    ZfactorD |
+         L1. |  -32.26207   2.917801   -11.06   0.000    -37.98085   -26.54328
+             |
+       _cons |   181.7386   2.521213    72.08   0.000     176.7971      186.68
+-------------+----------------------------------------------------------------
+     sigma_u |          0
+     sigma_e |  6.9753636
+         rho |          0   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+3) Multivariate regression of the 5 constructed factors & U5MR with a 2 year time lag
+
+. xtreg CM L2.ZfactorA L2.ZfactorB1 L2.ZfactorC L2.ZfactorD
+
+Random-effects GLS regression                   Number of obs      =        48
+Group variable: Country                         Number of groups   =         3
+
+R-sq:  within  = 0.7732                         Obs per group: min =        11
+       between = 0.9992                                        avg =      16.0
+       overall = 0.8838                                        max =        19
+
+                                                Wald chi2(4)       =    326.96
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+          CM |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    ZfactorA |
+         L2. |  -35.30229    3.91828    -9.01   0.000    -42.98198    -27.6226
+             |
+   ZfactorB1 |
+         L2. |   19.64474   4.418927     4.45   0.000     10.98381    28.30568
+             |
+    ZfactorC |
+         L2. |  -15.70282   3.345099    -4.69   0.000     -22.2591   -9.146552
+             |
+    ZfactorD |
+         L2. |  -33.63099   3.563717    -9.44   0.000    -40.61575   -26.64624
+             |
+       _cons |   174.4973   2.735514    63.79   0.000     169.1358    179.8588
+-------------+----------------------------------------------------------------
+     sigma_u |          0
+     sigma_e |  7.0183284
+         rho |          0   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+4) Multivariate regression of the 5 constructed factors & U5MR with a 3 year factor time lag
+
+. xtreg CM L3.ZfactorA L3.ZfactorB1 L3.ZfactorC L3.ZfactorD
+
+Random-effects GLS regression                   Number of obs      =        45
+Group variable: Country                         Number of groups   =         3
+
+R-sq:  within  = 0.7192                         Obs per group: min =        10
+       between = 0.9991                                        avg =      15.0
+       overall = 0.8660                                        max =        18
+
+                                                Wald chi2(4)       =    258.40
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+          CM |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    ZfactorA |
+         L3. |  -35.96592   4.260522    -8.44   0.000    -44.31639   -27.61545
+             |
+   ZfactorB1 |
+         L3. |   19.55081    5.17058     3.78   0.000     9.416661    29.68496
+             |
+    ZfactorC |
+         L3. |  -14.90017   3.758061    -3.96   0.000    -22.26583   -7.534505
+             |
+    ZfactorD |
+         L3. |  -37.20885   4.625767    -8.04   0.000    -46.27518   -28.14251
+             |
+       _cons |   166.7094   3.081805    54.09   0.000     160.6692    172.7496
+-------------+----------------------------------------------------------------
+     sigma_u |          0
+     sigma_e |  6.8722629
+         rho |          0   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+ 
